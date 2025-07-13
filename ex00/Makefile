@@ -2,7 +2,9 @@ NAME = zombie
 
 INCLUDES = includes
 SRC = srcs/class/Zombie.cpp \
-	  srcs/main.cpp
+	  srcs/main.cpp \
+	  srcs/newZombie.cpp \
+	  srcs/randomChump.cpp
 
 CXX = c++
 
