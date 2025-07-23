@@ -5,12 +5,12 @@ SRC = srcs/main.cpp
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INCLUDES)
+truc = -Wall -Wextra -Werror -std=c++98 -I$(INCLUDES)
 
 all: $(NAME)
 
 $(NAME): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(SRC)
+	$(CXX) $(truc) -o $(NAME) $(SRC)
 
 clean:
 	rm -f $(NAME)

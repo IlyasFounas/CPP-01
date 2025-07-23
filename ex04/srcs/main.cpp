@@ -13,35 +13,52 @@ bool	verif_args(int argc)
 	return (true);
 }
 
-void	fill_outfile(std::ifstream &infile, std::ofstream &outfile)
+void	replace_line(std::vector<std::string> *tab, std::string str,
+		std::string str2, int y, int i)
 {
-	int	i = 0;
-    int y = -1;
+	std::string res = (*tab)[i].substr(0, y) + str2 + (*tab)[i].substr(y
+			+ str.length());
+	(*tab)[i] = res;
+	std::cout << &(*tab)[i][y] << std::endl;
+}
+
+void	fill_outfile(std::ifstream &infile, std::ofstream &outfile,
+		std::string str, std::string str2)
+{
+	int	i;
+	int	y;
+
+	i = 0;
 	std::vector<std::string> tab;
-    std::string line;
-	
-    while (std::getline(infile, line))
+	std::string line;
+	while (std::getline(infile, line))
 	{
 		tab.push_back(line);
-		// call the replace function on tab[i]
+		y = -1;
+		while (tab[i][++y])
+		{
+			if (tab[i].compare(y, str.length(), str) == 0)
+			{
+				replace_line(&tab, str, str2, y, i);
+				break ;
+			}
+		}
 		i++;
 	}
-    while (++y < i)
-        outfile << tab[i] << std::endl;
+	y = -1;
+	while (++y < i)
+		outfile << tab[y] << std::endl;
 }
 
 int	main(int argc, char **argv)
 {
-	int	exit_code = 0;
+	if (verif_args(argc) == false)
+		return (1);
 	std::string outfilename = std::string(argv[1]) + ".replace";
 	std::ifstream infile(argv[1]);
 	std::ofstream outfile(outfilename.c_str());
-	
-    if (verif_args(argc) == true)
-		fill_outfile(infile, outfile);
-	else
-		exit_code = 1;
+	fill_outfile(infile, outfile, argv[2], argv[3]);
 	infile.close();
 	outfile.close();
-	return (exit_code);
+	return (0);
 }
