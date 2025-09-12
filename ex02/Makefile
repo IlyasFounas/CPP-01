@@ -1,7 +1,7 @@
 NAME = hibrain
 
 INCLUDES = includes
-SRC = srcs/main.cpp 
+SRC = main.cpp 
 
 CXX = c++
 

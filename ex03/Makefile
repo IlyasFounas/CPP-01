@@ -1,10 +1,10 @@
 NAME = weapon
 
 INCLUDES = includes
-SRC = srcs/class/Weapon.cpp \
-	  srcs/class/HumanA.cpp \
-	  srcs/class/HumanB.cpp \
-	  srcs/main.cpp 
+SRC = Weapon.cpp \
+	  HumanA.cpp \
+	  HumanB.cpp \
+	  main.cpp 
 
 CXX = c++
 

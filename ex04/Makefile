@@ -1,7 +1,7 @@
 NAME = ex04
 
 INCLUDES = includes
-SRC = srcs/main.cpp 
+SRC = main.cpp 
 
 CXX = c++
 

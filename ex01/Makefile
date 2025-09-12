@@ -1,9 +1,9 @@
 NAME = zombieHorde
 
 INCLUDES = includes
-SRC = srcs/class/Zombie.cpp \
-	  srcs/main.cpp \
-	  srcs/zombieHorde.cpp
+SRC = Zombie.cpp \
+	  main.cpp \
+	  zombieHorde.cpp
 
 CXX = c++
 
