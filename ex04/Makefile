@@ -1,11 +1,10 @@
-NAME = ex04
+NAME = replace
 
-INCLUDES = includes
 SRC = main.cpp 
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INCLUDES)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 

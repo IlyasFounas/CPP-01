@@ -1,19 +1,17 @@
-#include "ex04.h"
+#include "replace.hpp"
 
 bool	verif_args(int argc)
 {
 	if (argc != 4)
 	{
-		if (argc > 4)
-			std::cerr << "to many arguments" << std::endl;
-		else
-			std::cerr << "less arguments" << std::endl;
+		std::cerr << "replace program should be executed like that : " << std::endl;
+		std::cerr << "./replace [filename] [word_to_be_replaced] [replace_word]" << std::endl;
 		return (false);
 	}
 	return (true);
 }
 
-void	replace_line(std::vector<std::string> *tab, std::string str,
+void	replace_line(/* std::vector<std::string> *tab */std::string tab, std::string str,
 		std::string str2, int y, int i)
 {
 	std::string res = (*tab)[i].substr(0, y) + str2 + (*tab)[i].substr(y
@@ -29,7 +27,8 @@ void	fill_outfile(std::ifstream &infile, std::ofstream &outfile,
 	int	y;
 
 	i = 0;
-	std::vector<std::string> tab;
+	// std::vector<std::string> tab;
+	std::string tab;
 	std::string line;
 	while (std::getline(infile, line))
 	{
@@ -54,8 +53,18 @@ int	main(int argc, char **argv)
 {
 	if (verif_args(argc) == false)
 		return (1);
-	std::string outfilename = std::string(argv[1]) + ".replace";
 	std::ifstream infile(argv[1]);
+   	if (!infile.is_open())
+	{
+        std::cerr << "Cannot open file " << argv[1] << std::endl;
+        return 1;
+    }
+   	if (infile.fail())
+	{
+        std::cerr << "Failed to open file " << argv[1] << std::endl;
+        return 1;
+    }
+	std::string outfilename = std::string(argv[1]) + ".replace";
 	std::ofstream outfile(outfilename.c_str());
 	fill_outfile(infile, outfile, argv[2], argv[3]);
 	infile.close();
