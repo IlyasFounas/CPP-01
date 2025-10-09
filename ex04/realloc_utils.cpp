@@ -1,7 +1,9 @@
-#include "replace.hpp"
+#include "replace_search.hpp"
 
-std::string reallaoc_tab(std::string tab, std::string s)
+std::string realloc_tab(std::string &tab, std::string s)
 {
-    
-    return (NULL);
+    std::string res;
+
+    res = tab + s + '\n';
+    return (res);
 }

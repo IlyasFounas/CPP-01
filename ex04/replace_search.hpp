@@ -6,6 +6,6 @@
 #include "fstream"
 #include "vector"
 
-std::string reallaoc_tab(std::string tab, std::string s);
+std::string realloc_tab(std::string &tab, std::string s);
 
 #endif

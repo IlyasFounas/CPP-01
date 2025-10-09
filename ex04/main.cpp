@@ -1,4 +1,4 @@
-#include "replace.hpp"
+#include "replace_search.hpp"
 
 bool	verif_args(int argc)
 {
@@ -11,42 +11,41 @@ bool	verif_args(int argc)
 	return (true);
 }
 
-void	replace_line(/* std::vector<std::string> *tab */std::string tab, std::string str,
-		std::string str2, int y, int i)
+std::string	replace_line(std::string line, std::string str,
+		std::string str2, int y)
 {
-	std::string res = (*tab)[i].substr(0, y) + str2 + (*tab)[i].substr(y
+	std::string res = line.substr(0, y) + str2 + line.substr(y
 			+ str.length());
-	(*tab)[i] = res;
-	std::cout << &(*tab)[i][y] << std::endl;
+	return (res);
 }
 
 void	fill_outfile(std::ifstream &infile, std::ofstream &outfile,
 		std::string str, std::string str2)
 {
-	int	i;
 	int	y;
+	int i = 0;
+	int replace;
 
-	i = 0;
-	// std::vector<std::string> tab;
 	std::string tab;
 	std::string line;
 	while (std::getline(infile, line))
 	{
-		tab.push_back(line);
 		y = -1;
-		while (tab[i][++y])
+		replace = 0;
+		while (line[++y])
 		{
-			if (tab[i].compare(y, str.length(), str) == 0)
+			if (line.compare(y, str.length(), str) == 0)
 			{
-				replace_line(&tab, str, str2, y, i);
+				tab = realloc_tab(tab, replace_line(line, str, str2, y));
+				replace = 1;
 				break ;
 			}
 		}
+		if (replace == 0)
+			tab = realloc_tab(tab, line);
 		i++;
 	}
-	y = -1;
-	while (++y < i)
-		outfile << tab[y] << std::endl;
+	outfile << tab << std::endl;
 }
 
 int	main(int argc, char **argv)

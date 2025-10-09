@@ -1,10 +1,11 @@
 NAME = replace
 
-SRC = main.cpp 
+SRC = main.cpp \
+	  realloc_utils.cpp
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
 
 all: $(NAME)
 
