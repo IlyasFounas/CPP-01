@@ -1,4 +1,4 @@
-#include "../includes/Zombie.hpp"
+#include "Zombie.hpp"
 
 Zombie *zombieHorde(int N, std::string name)
 {
@@ -6,7 +6,12 @@ Zombie *zombieHorde(int N, std::string name)
     int i;
 
     i = 0;
-    res = new Zombie[N];
+    res = new (std::nothrow) Zombie[N];
+    if (!res)
+    {
+        std::cerr << "Allocation failed" << std::endl;
+        return (NULL);
+    }
     while (i < N)
     {
         res[i].setName(name);
