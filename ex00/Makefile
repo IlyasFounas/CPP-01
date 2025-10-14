@@ -1,4 +1,4 @@
-NAME = zombie
+NAME = brainz
 
 INCLUDES = includes
 SRC = Zombie.cpp \

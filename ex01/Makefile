@@ -1,4 +1,4 @@
-NAME = zombieHorde
+NAME = moreBrainz
 
 INCLUDES = includes
 SRC = Zombie.cpp \

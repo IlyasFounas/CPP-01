@@ -1,4 +1,4 @@
-NAME = hibrain
+NAME = hiBrain
 
 INCLUDES = includes
 SRC = main.cpp 

@@ -12,6 +12,11 @@ HumanB::~HumanB()
 
 void HumanB::attack()
 {
+    if (!_weapon)
+    {
+        std::cout << _name << " attacks with his aura " << std::endl;
+        return ;
+    }
     std::cout << _name << " attacks with thier ";
     std::cout << (*_weapon).getType() << std::endl;
 }
