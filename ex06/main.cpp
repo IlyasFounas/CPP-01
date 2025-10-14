@@ -1,11 +1,9 @@
 #include "Harl.hpp"
 
-int main(void)
+int main(int argc, char **argv)
 {
     Harl turbofaker;
-
-    turbofaker.complain("DEBUG");
-    turbofaker.complain("INFO");
-    turbofaker.complain("WARNING");
-    turbofaker.complain("ERROR");
+    if (argc != 2)
+        return (0);
+    turbofaker.complain(argv[1]);
 }
