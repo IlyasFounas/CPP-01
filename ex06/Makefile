@@ -1,4 +1,4 @@
-NAME = harl2.0
+NAME = harlFilter
 
 INCLUDES = includes
 SRC = main.cpp \
